@@ -7,3 +7,4 @@
 
 Github workings are noted right now.
 
+index.js - contains some JS code.
