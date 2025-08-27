@@ -8,3 +8,6 @@
 Github workings are noted right now.
 
 index.js - contains some JS code.
+
+On 27th Aug we are trying new Stuff Fetch, Authentication, Database.
+
