@@ -2,6 +2,8 @@
 // 1. We make a post request to login
 // 2. We make a get request which displays all users incase someone enters the right password.
 
+//All this will be stored in a database
+
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const jwtPassword = "123456";
@@ -42,8 +44,8 @@ app.post("/signin", function (req, res) {
       msg: "User doesnt exist in our in memory db",
     });
   }
-
-  var token = jwt.sign({ username: username }, "123456");
+  //the function below will take the username as input. And the password and will return the token.
+  var token = jwt.sign({ username: username }, jwtPassword);
   return res.json({
     token,
   });
@@ -52,7 +54,16 @@ app.post("/signin", function (req, res) {
 app.get("/users", function (req, res) {
   const token = req.headers.authorization;
   const decoded = jwt.verify(token, jwtPassword);
+
+  //decoded includeds the username and the iat stuff
+  //as after the tokenization the matter looks like this
+  // {
+  //     user : something@somthign.com
+  //     iat : somerandom giberrish
+  // }
+
   const username = decoded.username;
+
   res.json({
     users: ALL_USERS,
   });
