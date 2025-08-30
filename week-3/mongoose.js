@@ -15,24 +15,23 @@ const User = mongoose.model("User", {
 });
 
 //now putting our user into the user schema we just defined
-const user = new User({
-  name: "bishwnath Hansda",
-  email: "jsa;dklf@gmail.com",
-  password: "1234",
-});
+
 //without this .save() nothing will work
 app.get("/signin", function (req, res) {
-    const username = req.body.username;
-    const email = req.body.email;
-    const password = req.body.password;
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = req.body.password;
 
-//write code to check if the data alreadyy exists in the database
+  const user = new User({
+    name: name,
+    email: email,
+    password: password,
+  });
 
-    
-    
-    
-    
-    
-    user.save(console.log("the matter has been added to the database !"));
-
+  //write code to check if the data alreadyy exists in the database
+  const checking = await findOne({name: }){}
+  user.save(console.log("the matter has been added to the database !"));
 });
+
+
+app.listen("3000")

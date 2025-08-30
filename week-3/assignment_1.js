@@ -9,6 +9,7 @@ const jwt = require("jsonwebtoken");
 const jwtPassword = "123456";
 
 const app = express();
+//this is the in memory object and say if the server ever crashes then we'll have to start over with your new in-memory object !
 
 const ALL_USERS = [
   {
